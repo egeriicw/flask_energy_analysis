@@ -1,0 +1,23 @@
+redis:
+  image: redis
+  ports:
+    - "6379:6379"
+db:
+  image: postgres
+  ports:
+    - "5432:5432"
+web:
+  build: .
+  command: python manage.py runserver
+  volumes:
+    - .:/code
+  ports:
+    - "8000:8000"
+  links:
+    - db
+  environment:
+    DEBUG: True
+    SECRET_KEY: asdklfjeoja039rjdlkjfaoi3rdk
+    DATABASE_USER: postgres
+    DATABASE_PASSWORD: postgres
+    DATABASE_NAME: application_dev
