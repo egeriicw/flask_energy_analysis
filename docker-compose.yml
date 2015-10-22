@@ -17,7 +17,7 @@ web:
     - db
   environment:
     DEBUG: True
-    SECRET_KEY: asdklfjeoja039rjdlkjfaoi3rdk
+    SECRET_KEY: $SECRET_KEY
     DATABASE_USER: postgres
     DATABASE_PASSWORD: postgres
     DATABASE_NAME: application_dev
