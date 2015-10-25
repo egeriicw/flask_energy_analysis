@@ -6,8 +6,14 @@ db:
   image: postgres
   ports:
     - "5432:5432"
+  environment:
+    POSTGRES_PASSWORD: docker
+    POSTGRES_USER: docker
 web:
   build: .
+  command: python manage.py db init
+  command: python manage.py db migrate
+  command: python manage.py db upgrade
   command: python manage.py runserver
   volumes:
     - .:/code
